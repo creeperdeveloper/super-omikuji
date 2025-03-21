@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>おみくじ設定</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+
+<body>
+  <div id="particles-js"></div>
+
+  <!-- 雲のエフェクト -->
+  <div class="cloud-container">
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1 class="site-title">おみくじ</h1>
+      <div class="header-buttons">
+        <button id="theme-toggle" aria-label="テーマ切り替え">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a href="index.html" class="home-button" aria-label="ホーム">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <main class="card settings-card">
+      <h2>設定</h2>
+
+      <div class="settings-section">
+        <h2>表示設定</h2>
+
+        <div class="setting-item">
+          <label>文字色</label>
+          <div class="color-options">
+            <div class="color-option" data-color="inherit">
+              <div class="color-preview" style="background-color: #1a1a1a;"></div>
+              <span>デフォルト</span>
+            </div>
+            <div class="color-option" data-color="rainbow">
+              <div class="color-preview rainbow-preview"></div>
+              <span>レインボー</span>
+            </div>
+            <div class="color-option" data-color="black">
+              <div class="color-preview" style="background-color: #000000;"></div>
+              <span>黒</span>
+            </div>
+            <div class="color-option" data-color="white">
+              <div class="color-preview" style="background-color: #ffffff; border: 1px solid #e5e7eb;"></div>
+              <span>白</span>
+            </div>
+            <div class="color-option" data-color="yellow">
+              <div class="color-preview" style="background-color: #fbbf24;"></div>
+              <span>黄</span>
+            </div>
+            <!-- 紫の選択肢を削除 -->
+            <div class="color-option" data-color="green">
+              <div class="color-preview" style="background-color: #10b981;"></div>
+              <span>緑</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <label for="animation-level">アニメーションレベル</label>
+          <div class="range-slider-container">
+            <input type="range" id="animation-level" class="range-slider" min="0" max="2" step="1" value="1">
+            <div class="range-labels">
+              <span>少なめ</span>
+              <span>普通</span>
+              <span>多め</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <label for="sound-enabled">効果音</label>
+          <label class="switch">
+            <input type="checkbox" id="sound-enabled">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <label for="fortune-style">おみくじスタイル</label>
+          <div class="select-wrapper">
+            <select id="fortune-style" class="select-input">
+              <option value="traditional">伝統的</option>
+              <option value="modern">モダン</option>
+              <option value="cute">かわいい</option>
+            </select>
+            <div class="select-arrow"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h2>表示項目</h2>
+
+        <div class="setting-item">
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="show-love" checked>
+              恋愛運
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="show-money" checked>
+              金運
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="show-work" checked>
+              仕事運
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="show-health" checked>
+              健康運
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="show-advice" checked>
+              アドバイス
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <button id="save-settings" class="action-button">
+        <span class="button-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+            <polyline points="7 3 7 8 15 8"></polyline>
+          </svg>
+        </span>
+        設定を保存
+      </button>
+    </main>
+
+
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+
+</html>
